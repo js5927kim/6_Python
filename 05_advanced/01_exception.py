@@ -63,13 +63,15 @@ class Account:
     def __str__(self):
         return f"[{self.owner}] 잔액: {self.balance:,}원"
 
-acc = Account("카리나", 30000)
+acc = Account("이우진", 30000)
 print(acc)
 
 for amount in [5000, 50000, -1000]:
     try:
         acc.withdraw(amount)
     except NoBalanceError as e:
-        print(f"{e}")
+        print(f"출금 실패 : {e}")
+    except InvalidAmountError as e:
+        print(f"출금 실패 : {e}")
     else:
         print(f"출금 성공 : {amount}원")
