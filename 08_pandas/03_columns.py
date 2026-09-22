@@ -48,3 +48,13 @@ print(f"sample2 : {sample2.tolist()}")
 
 converted = pd.to_numeric(sample2, errors='coerce')
 print(converted.tolist())
+print(f"결츨 : {converted.isna().sum()}")
+
+c = pd.to_numeric(sample2.str.replace(',',''), errors='coerce')
+print(c.tolist())
+print(f"결측 ; {c.isna().sum()}")
+
+"""
+    astype 은 하나라도 값이 이상하면 전체를 변경할 수 없음!
+    to_numeric(errors='coerce') 은 오염된 데이터를 강제로 nan(결측)으로 남기고 나머지는 변경! 
+"""
